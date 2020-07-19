@@ -1,0 +1,64 @@
+{
+  "name": "solapp",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "./",
+  "main": "./app-build/electron/index.js'=",
+  "scripts": {
+    "setup": "chmod +x ./helpers/* && ./helpers/setup.sh",
+    "dev": "concurrently \"cd app/client && npm start\" \"electron ./app/electron\"",
+    "build-linux": "./helpers/build-helper.sh && electron-builder build -c.extraMetadata.main=./app-build/electron/index.js --linux --publish never",
+    "build-windows": "./helpers/build-helper.sh && electron-builder build -c.extraMetadata.main=./app-build/electron/index.js --windows --publish never",
+    "build-mac": "./helpers/build-helper.sh && electron-builder build -c.extraMetadata.main=./app-build/electron/index.js --mac --publish never",
+    "build-all": "./helpers/build-helper.sh && electron-builder build -c.extraMetadata.main=./app-build/electron/index.js --linux --windows --mac --publish never"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^9.1.0",
+    "electron-builder": "^22.7.0"
+  },
+  "dependencies": {
+    "concurrently": "^5.2.0",
+    "electron-is-dev": "^1.2.0",
+    "ganache-cli": "^6.9.1",
+    "web3": "^1.2.9"
+  },
+  "build": {
+    "files": [
+      "app-build/**/*",
+      "node_modules/**/*",
+      "static/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "Cr0wn-Gh0ul"
+    },
+    "linux": {
+      "target": [
+        "zip"
+      ]
+    },
+    "win": {
+      "target": "NSIS"
+    }
+  }
+}

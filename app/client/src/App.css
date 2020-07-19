@@ -1,0 +1,16 @@
+.app {
+  text-align: center;
+  max-height: 100vh !important;
+  min-height: 100vh !important;
+}
+
+.logs {
+  max-height: 100vh !important;
+  overflow-y: scroll;
+}
+
+.contractFunctions {
+  max-height: 100vh !important;
+  overflow-y: scroll;
+}
+
